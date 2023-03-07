@@ -1,0 +1,34 @@
+input {
+    font-size: 5em;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    --Icon-fontSize: 1.25em;
+    margin: var(--Typography-margin, 0px);
+    font-family: var(--joy-fontFamily-display);
+    display: inline-block;
+    font-weight: var(--joy-fontWeight-xl);
+    font-size: var(--Typography-fontSize, var(--joy-fontSize-xl7));
+    line-height: var(--joy-lineHeight-sm);
+    letter-spacing: var(--joy-letterSpacing-sm);
+    color: var(--joy-palette-text-primary);
+    width: 94px;
+    padding: 0;
+    caret-color: transparent;
+    text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+  
+  input[type=number]::-webkit-outer-spin-button,
+  input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }

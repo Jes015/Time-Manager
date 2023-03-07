@@ -1,0 +1,30 @@
+{
+  "name": "11.react-router",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "Jes015",
+  "license": "ISC",
+  "dependencies": {
+    "@emotion/react": "11.10.6",
+    "@emotion/styled": "11.10.6",
+    "@mui/icons-material": "5.11.11",
+    "@mui/joy": "5.0.0-alpha.69",
+    "@mui/material": "5.11.11",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.8.2"
+  },
+  "devDependencies": {
+    "standard": "17.0.0",
+    "vite": "4.1.4"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
+  }
+}
