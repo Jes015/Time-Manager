@@ -1,15 +1,17 @@
-// React
-import React from 'react'
-
 // Styles
-import './InputTime.css'
+import './input.css'
 
 export default function Input ({ data, setTime, enable }) {
-  const handleChange = (event) => {
-    // Parse value
+  const parseValue = (event) => {
+    // only keeps last 2 characters
     event.target.value = event.target.value.substring(event.target.value.length - 2)
     // Verify value
     if (Number(event.target.value) > 59) event.target.value = 59
+  }
+
+  const handleChange = (event) => {
+    // Parse value
+    parseValue(event)
     // Set value
     setTime(Object.keys(data)[0], Number(event.target.value))
   }

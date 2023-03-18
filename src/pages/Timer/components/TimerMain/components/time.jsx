@@ -1,12 +1,9 @@
-// React
-import React from 'react'
-
 // MUI
 import Box from '@mui/joy/Box'
 import Typography from '@mui/joy/Typography'
 
 // Custom components
-import InputTime from './InputTime'
+import InputTime from './input'
 
 export default function Time ({ time, setTime, start }) {
   const { hours, minutes, seconds } = time

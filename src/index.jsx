@@ -4,4 +4,4 @@ import App from './App'
 
 const mountPoint = document.getElementById('root')
 const root = createRoot(mountPoint)
-root.render(<App />)
+root.render(<React.StrictMode><App /></React.StrictMode>)

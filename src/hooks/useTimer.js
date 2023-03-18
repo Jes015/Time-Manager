@@ -1,6 +1,9 @@
 // React
 import { useEffect, useRef, useState } from 'react'
 
+// Utilities
+import { setLocalStorage } from '../utilities'
+
 export default function useTimer (defaultTime, defaultAlarmTone) {
   if (!defaultTime || !defaultAlarmTone) throw new Error('You must provide valid values for defualtTime and defaultAlarmTone')
 
@@ -9,6 +12,7 @@ export default function useTimer (defaultTime, defaultAlarmTone) {
   const [start, setStart] = useState(false)
   const lastInterval = useRef(null)
   const totalTime = useRef(defaultTime)
+  // eslint-disable-next-line no-undef
   const alarmTone = useRef(new Audio(defaultAlarmTone))
 
   // Decrease time
@@ -68,7 +72,7 @@ export default function useTimer (defaultTime, defaultAlarmTone) {
       alarmTone.current.src = url
       alarmTone.current.play().then(() => {
         alarmTone.current.pause()
-        localStorage.setItem('alarmTone', url)
+        setLocalStorage('alarmTone', url)
         resolve('New sound set')
       }).catch(() => {
         alarmTone.current.src = defaultAlarmTone
