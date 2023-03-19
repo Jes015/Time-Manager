@@ -1,1 +1,1 @@
-export { default as TimerHeader } from './TimerHeader'
+export { default as TimerHeader } from './timerHeader'

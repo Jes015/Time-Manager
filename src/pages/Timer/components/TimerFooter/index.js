@@ -1,1 +1,1 @@
-export { default as TimerFooter } from './TimerFooter'
+export { default as TimerFooter } from './timerFooter'

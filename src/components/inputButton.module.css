@@ -1,0 +1,32 @@
+.inputButton__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.3rem;
+}
+
+.inputButton__component {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 100%;
+}
+
+.inputButton__input {
+    width: 100%;
+}
+
+.inputButton__button {
+    font-size: 1rem;
+}
+
+.inputButton__descriptionError {
+    margin: 0.2rem;
+    font-size: 0.7rem;
+}
+
+.inputButton__input, .inputButton__button {
+    background-color: var(--primary-border-color);
+    border-color: var(--secondary-border-color);
+}

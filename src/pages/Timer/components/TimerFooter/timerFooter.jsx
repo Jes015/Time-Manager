@@ -1,15 +1,15 @@
-// Joy UI
-import Box from '@mui/joy/Box'
-
 // Custom components
 import { SettingsButton } from './components'
+
+// Styles
+import styles from './timerFooter.module.css'
 
 export default function TimerFooter ({ handleModal }) {
   return (
     <footer>
-      <Box sx={{ position: 'absolute', bottom: 5, right: 5 }}>
+      <div className={styles.timerFooter__container}>
         <SettingsButton handleModal={handleModal} />
-      </Box>
+      </div>
     </footer>
   )
 }

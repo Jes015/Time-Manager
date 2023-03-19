@@ -1,1 +1,1 @@
-export { default as TimerMain } from './TimerMain'
+export { default as TimerMain } from './timerMain'

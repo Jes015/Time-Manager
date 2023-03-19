@@ -1,11 +1,13 @@
-// Joy UI
-import IconButton from '@mui/joy/IconButton'
-import SettingsIcon from '@mui/icons-material/Settings'
+// Icons
+import { AiFillSetting } from 'react-icons/ai'
+
+// Styles
+import styles from '../timerFooter.module.css'
 
 export default function SettingsButton ({ handleModal }) {
   return (
-    <IconButton variant='outlined' color='neutral' onClick={handleModal}>
-      <SettingsIcon />
-    </IconButton>
+    <button className={styles.timerFooter__button} onClick={handleModal}>
+      <AiFillSetting />
+    </button>
   )
 }

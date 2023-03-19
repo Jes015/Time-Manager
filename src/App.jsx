@@ -1,15 +1,12 @@
-// MUI
-import { CssVarsProvider } from '@mui/joy/styles'
-import CssBaselinse from '@mui/joy/CssBaseline'
-
 // Routing
 import Routing from './Routing'
 
+import 'normalize.css'
+import './App.css'
+import '@fontsource/public-sans'
+
 export default function App () {
   return (
-    <CssVarsProvider defaultMode='dark' modeStorageKey='mode-toggle-demo'>
-      <CssBaselinse />
-      <Routing />
-    </CssVarsProvider>
+    <Routing />
   )
 }

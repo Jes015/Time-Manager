@@ -1,0 +1,59 @@
+.timerMain__mainContainer { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding-bottom: 10vh;
+    gap: 1rem
+}
+
+.timerMain__controlsContainer { 
+    display: flex;
+    gap: 0.8rem;
+}
+
+.controls__button {
+    min-width: 7rem;
+}
+
+.time__divider { 
+    font-size: 4.5rem;
+}
+
+.input {
+    font-size: 4.6rem;
+    border: none;
+    font-weight: 700;
+    letter-spacing: 0.01rem;
+    caret-color: transparent;
+    text-align: center;
+    width: 6.5rem;
+    padding: 0;
+    background-color: transparent;
+}
+
+.input:focus {
+    border: 0.0625rem solid var(--primary-border-color);
+    background-color: transparent;
+}
+
+.input::selection {
+    background-color: transparent;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input[type=number] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+.input[type=number]::-webkit-outer-spin-button,
+.input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

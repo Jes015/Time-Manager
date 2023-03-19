@@ -1,5 +1,5 @@
 // Styles
-import './input.css'
+import styles from '../timerMain.module.css'
 
 export default function Input ({ data, setTime, enable }) {
   const parseValue = (event) => {
@@ -23,6 +23,6 @@ export default function Input ({ data, setTime, enable }) {
   const format = (data2) => data2.toString().length === 1 ? `0${data2}` : data2
 
   return (
-    <input type='number' value={format(data[Object.keys(data)[0]])} onChange={handleChange} onClick={handleClick} disabled={enable} />
+    <input className={styles.input} type='number' value={format(data[Object.keys(data)[0]])} onChange={handleChange} onClick={handleClick} disabled={enable} />
   )
 }

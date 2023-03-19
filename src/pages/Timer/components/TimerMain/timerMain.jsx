@@ -1,19 +1,19 @@
-// JOY
-import Box from '@mui/joy/Box'
-
 // CUSTOM COMPONENTS
 import Time from './components/time'
 import Controls from './components/controls'
 
+// Styles
+import styles from './timerMain.module.css'
+
 export default function TimerMain ({ time, setTotalTime, start, restartTimer, startStopTimer }) {
   return (
     <main>
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh', paddingBottom: '10vh' }}>
+      <div className={styles.timerMain__mainContainer}>
         <Time time={time} setTime={setTotalTime} start={start} />
-        <Box sx={{ display: 'flex', gap: 2 }}>
+        <div className={styles.timerMain__controlsContainer}>
           <Controls time={time} start={start} startStopTimer={startStopTimer} restartTimer={restartTimer} />
-        </Box>
-      </Box>
+        </div>
+      </div>
     </main>
   )
 }

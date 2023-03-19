@@ -1,9 +1,8 @@
-// MUI
-import Box from '@mui/joy/Box'
-import Typography from '@mui/joy/Typography'
-
 // Custom components
 import InputTime from './input'
+
+// Styles
+import styles from '../timerMain.module.css'
 
 export default function Time ({ time, setTime, start }) {
   const { hours, minutes, seconds } = time
@@ -14,12 +13,12 @@ export default function Time ({ time, setTime, start }) {
 
   return (
     time &&
-      <Box sx={{ display: 'flex', justifyItems: 'center' }}>
+      <div className='flex justify-items-center'>
         <InputTime data={({ hours })} setTime={handleTime} enable={start} />
-        <Typography level='display1'>:</Typography>
+        <span className={styles.time__divider}>:</span>
         <InputTime data={({ minutes })} setTime={handleTime} enable={start} />
-        <Typography level='display1'>:</Typography>
+        <span className={styles.time__divider}>:</span>
         <InputTime data={({ seconds })} setTime={handleTime} enable={start} />
-      </Box>
+      </div>
   )
 }

@@ -1,0 +1,10 @@
+.timerFooter__container {
+    position: absolute;
+    bottom: 0.45rem;
+    right: 0.45rem;
+}
+
+.timerFooter__button {
+    padding: 0.7rem;
+    font-size: 1.1rem;
+}

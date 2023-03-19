@@ -4,9 +4,6 @@ import { useState } from 'react'
 // Custom Hooks
 import useTimer from '../../hooks/useTimer'
 
-// JOY
-import Box from '@mui/joy/Box'
-
 // Custom components
 import { Modal } from '../../components'
 import { TimerHeader, TimerMain, TimerFooter, Settings } from './components'
@@ -22,13 +19,13 @@ export default function Timer () {
     setModalOpen(!modalOpen)
   }
   return (
-    <Box sx={{ position: 'relative' }}>
+    <div style={{ position: 'relative' }}>
       <TimerHeader progressNumber={progressNumber} />
       <TimerMain time={time} setTotalTime={setTotalTime} start={start} restartTimer={restartTimer} startStopTimer={startStopTimer} />
       <TimerFooter handleModal={handleModal} />
-      <Modal modalOpen={modalOpen} handleModal={handleModal}>
+      <Modal title='Settings' modalOpen={modalOpen} handleModal={handleModal}>
         <Settings setAlarmTone={setAlarmTone} />
       </Modal>
-    </Box>
+    </div>
   )
 }
