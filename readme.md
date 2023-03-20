@@ -1,11 +1,39 @@
-# Timer with Joy-UI
+# Time manager
 
-URL: https://timerjs.great-site.net/
+Effortlessly manage your daily tasks and goals with our time-management app. Stay on track with a timer for each task, daily goal-setting, and other handy features.
+With our app, you can say goodbye to stress and hello to productivity. Take control of your day with ease, whether you're a busy professional or a student trying to balance schoolwork and hobbies. Start maximizing your time!
 
-## Desktop version
+## Features
 
-![desktop version](https://i.ibb.co/P4MRDj0/desktop-version.png)
+- Timer: Maximize your productivity with our timer app. Stay focused and achieve your goals efficiently.
 
-![desktop version](https://i.ibb.co/k13D3Rn/desktop-version2.png)
+## Installation steps
 
-![desktop version](https://i.ibb.co/GFk1LTx/desktop-version3.png)
+1. Clone the repository
+
+```bash
+git clone https://github.com/Jes015/Time-Manager.git
+```
+
+2. CD into the working directory
+
+```bash
+cd Time-Manager
+```
+
+3. Install dependencies
+
+```bash
+npm install
+```
+
+4. Run the app
+
+```bash
+npm run dev
+```
+
+## Built with
+
+- React
+- Css modules
