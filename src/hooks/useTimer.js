@@ -12,8 +12,8 @@ export default function useTimer (defaultTime, defaultAlarmTone) {
   const [start, setStart] = useState(false)
   const lastInterval = useRef(null)
   const totalTime = useRef(defaultTime)
-  // eslint-disable-next-line no-undef
   const alarmTone = useRef(new Audio(defaultAlarmTone))
+  alarmTone.current.volume = 0.2
 
   // Decrease time
   const handleTime = () => {
@@ -69,15 +69,17 @@ export default function useTimer (defaultTime, defaultAlarmTone) {
   // Set alarm tone
   const setAlarmTone = (url) => {
     return new Promise((resolve, reject) => {
-      alarmTone.current.src = url
-      alarmTone.current.play().then(() => {
-        alarmTone.current.pause()
-        setLocalStorage('alarmTone', url)
-        resolve('New sound set')
-      }).catch(() => {
-        alarmTone.current.src = defaultAlarmTone
-        reject(new Error('Url does not provide mp3 file'))
-      })
+      // verify file format
+      fetch(url, { headers: { Accept: 'audio/mpeg, audio/wav' } })
+        .then(() => {
+          alarmTone.current.src = url
+          setLocalStorage('alarmTone', url)
+          resolve('Sound set')
+        })
+        .catch(() => {
+          const error = new Error('Url does not provide mp3 file')
+          reject(error)
+        })
     })
   }
 

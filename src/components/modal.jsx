@@ -7,7 +7,7 @@ import { Backdrop } from '.'
 // Styles
 import styles from './modal.module.css'
 
-export default function BasicModal ({ title, modalOpen, handleModal, children }) {
+export default function Modal ({ title, modalOpen, handleModal, children }) {
   return (
     modalOpen && (
       <Backdrop>
