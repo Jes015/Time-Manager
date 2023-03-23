@@ -20,9 +20,15 @@ export default function Input ({ data, setTime, enable }) {
     event.target.select()
   }
 
+  // Prevent propagation to system key manager
+  const handleKeyUp = (event) => {
+    // Prevent stopPropagation method to set new time to system key manager
+    if (event.ctrlKey) return
+    event.stopPropagation()
+  }
   const format = (data2) => data2.toString().length === 1 ? `0${data2}` : data2
 
   return (
-    <input className={styles.input} type='number' value={format(data[Object.keys(data)[0]])} onChange={handleChange} onClick={handleClick} disabled={enable} />
+    <input className={styles.input} type='number' value={format(data[Object.keys(data)[0]])} onChange={handleChange} onClick={handleClick} disabled={enable} onKeyUp={handleKeyUp} />
   )
 }

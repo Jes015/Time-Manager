@@ -30,7 +30,7 @@ export default function InputModal ({ id, setData, label, placeholder }) {
   }
   return (
     <div className={styles.inputButton__container}>
-      <label htmlFor={id}>{label}</label>
+      <label className={styles.inputButton__label} htmlFor={id}>{label}</label>
       <div className={styles.inputButton__component}>
         <input className={styles.inputButton__input} id={id} placeholder={placeholder} value={value} onChange={handleChange} />
         <button className={styles.inputButton__button} onClick={handleClick}><AiOutlineSend /></button>

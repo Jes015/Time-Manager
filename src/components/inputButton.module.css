@@ -2,7 +2,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0.3rem;
 }
 
 .inputButton__component {
@@ -24,6 +23,10 @@
 .inputButton__descriptionError {
     margin: 0.2rem;
     font-size: 0.7rem;
+}
+
+.inputButton__label {
+    font-size: 0.88rem;
 }
 
 .inputButton__input, .inputButton__button {

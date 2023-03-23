@@ -5,6 +5,8 @@
 :root {
   --primary-background-color: #131318;
   --secondary-background-color: #25252D;
+  --terceary-background-color: rgba( 37 37 45 / 0.5);
+  --primary-backdrop-filter: blur(8px);
   --primary-text-color: #ebebef;
   --secondary-text-color: #d8d8df;
   --terceary-text-color: #F7F7F8;
@@ -57,7 +59,31 @@ button, input {
 }
 
 button:hover, input:focus {
-    color: #F7F7F8;
+    color: var(--terceary-text-color);
     background-color: var(--primary-border-color);
     border-color: var(--secondary-border-color);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 0 0.1rem;
+  background-color: transparent;
+  border: none;
+  height: 10px;
+}
+
+input[type="range"]::-webkit-slider-thumb, input[type=range]::-moz-range-thumb  {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--primary-text-color);
+  outline: none;
+  border: none;
+  height: 0.45rem;
+}
+
+
+input[type=range]::-webkit-slider-runnable-track,input[type=range]::-moz-range-track {
+  background-color: var(--secondary-border-color);
+  height: 0.13rem;
 }

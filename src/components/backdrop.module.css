@@ -4,6 +4,6 @@
     left: 0;
     height: 100vh;
     width: 100%;
-    background-color: rgba( 37 37 45 / 0.5);
-    backdrop-filter: blur(8px);
+    background-color: var(--terceary-background-color);
+    backdrop-filter: var(--primary-backdrop-filter);
 }
