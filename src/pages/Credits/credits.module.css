@@ -1,0 +1,31 @@
+.credits {
+    margin: auto;
+    max-width: 50%;
+}
+
+.credits__contributors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.credits__section {
+    margin: 1rem 0;
+}
+
+.credits__sectionName {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+@media screen and ( max-width: 774px ) {
+    .credits {
+        max-width: 80%;
+    }
+}
+
+@media screen and ( max-width: 402px ) {
+    .credits {
+        max-width: 90%;
+    }
+}
