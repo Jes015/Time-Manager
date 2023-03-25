@@ -16,6 +16,7 @@
 .credits__sectionName {
     display: inline-block;
     margin-bottom: 0.5rem;
+    font-size: 1.3rem;
 }
 
 @media screen and ( max-width: 774px ) {

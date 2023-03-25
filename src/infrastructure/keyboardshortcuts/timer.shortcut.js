@@ -1,5 +1,5 @@
 // Utilities
-import { getLocalStorage, setLocalStorage } from '../../utilities'
+import { getLocalStorage, setLocalStorage } from '@/utilities'
 
 export default function timerShortcuts (event, time, setTotalTime) {
   // Prevent key control

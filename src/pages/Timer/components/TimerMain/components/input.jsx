@@ -26,7 +26,10 @@ export default function Input ({ data, setTime, enable }) {
     if (event.ctrlKey) return
     event.stopPropagation()
   }
-  const format = (data2) => data2.toString().length === 1 ? `0${data2}` : data2
+  const format = (data2) => {
+    const timeformat = data2.toString().length === 1 ? `0${data2}` : data2
+    return timeformat
+  }
 
   return (
     <input className={styles.input} type='number' value={format(data[Object.keys(data)[0]])} onChange={handleChange} onClick={handleClick} disabled={enable} onKeyUp={handleKeyUp} />

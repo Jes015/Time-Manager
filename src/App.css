@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: public-sans;
+  src: url('../node_modules/@fontsource/public-sans/files/public-sans-latin-400-normal.woff2') format('woff2');
+}
+
 :root {
   --primary-background-color: #131318;
   --secondary-background-color: #25252D;
@@ -12,7 +17,7 @@
   --terceary-text-color: #F7F7F8;
   --primary-border-color: #25252d;
   --secondary-border-color: #434356;
-  --primary-font: 'Public Sans';
+  --primary-font: public-sans, sans-serif;
 }
 
 body {

@@ -1,10 +1,13 @@
 // Custom components
-import { ProgressBar } from '../../../../components'
+import { ProgressBar } from '@/components'
 
-export default function TimerHeader ({ progressNumber }) {
+// Utilities
+import { calcProgressBarTime } from '@/utilities'
+
+export default function TimerHeader ({ totalTime, currentTime }) {
   return (
     <header style={{ position: 'relative' }}>
-      <ProgressBar value={progressNumber} />
+      <ProgressBar value={calcProgressBarTime(totalTime, currentTime)} />
     </header>
   )
 }

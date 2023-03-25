@@ -1,7 +1,7 @@
-import { useKeybord } from '../hooks/'
+import { useKeybord } from '@/hooks/'
 
-export default function KeyboardManager ({ children, time, setTotalTime, start, isKeyboardEnable, shortcuts }) {
-  useKeybord(time, start, setTotalTime, isKeyboardEnable, shortcuts)
+export default function KeyboardManager ({ children, time, setTotalTime, start, shortcuts }) {
+  useKeybord(time, start, setTotalTime, shortcuts)
 
   return children
 }

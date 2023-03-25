@@ -1,5 +1,5 @@
 // Custom Components
-import { InputButton, Slider } from '../../../components/'
+import { InputButton, Slider } from '@/components/'
 
 export default function Settings ({ setAlarmTone, setAlarmVolume, alarmVolume }) {
   return (

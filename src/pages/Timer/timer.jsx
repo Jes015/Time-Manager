@@ -2,27 +2,27 @@
 import { useState } from 'react'
 
 // Custom Hooks
-import useTimer from '../../hooks/useTimer'
+import useTimer from '@/hooks/useTimer'
 
 // Custom components
-import { KeyboardManager, Modal } from '../../components'
+import { KeyboardManager, Modal } from '@/components'
 import { TimerHeader, TimerMain, TimerFooter, Settings } from './components'
 
 // Config
-import { defaultTime, defaultAlarmTone } from './config'
-import { timerShorcut } from '../../infrastructure/keyboardshortcuts'
+import { defaultTime, defaultTimerRingtone, defaultTimerVolume } from './config'
+import { timerShorcut } from '@/infrastructure/keyboardshortcuts'
 
 export default function Timer () {
-  const { time, start, startStopTimer, restartTimer, progressNumber, setTotalTime, setAlarmTone, isKeyboardEnable, setAlarmVolume, alarmVolume } = useTimer(defaultTime, defaultAlarmTone)
+  const { time, start, startStopTimer, restartTimer, totalTime, setTotalTime, setAlarmTone, setAlarmVolume, alarmVolume } = useTimer(defaultTime, defaultTimerRingtone, defaultTimerVolume)
   const [modalOpen, setModalOpen] = useState(false)
 
   const handleModal = () => {
     setModalOpen(!modalOpen)
   }
   return (
-    <KeyboardManager time={time} setTotalTime={setTotalTime} isKeyboardEnable={isKeyboardEnable} start={start} shortcuts={timerShorcut}>
+    <KeyboardManager time={time} setTotalTime={setTotalTime} start={start} shortcuts={timerShorcut}>
       <div style={{ position: 'relative' }}>
-        <TimerHeader progressNumber={progressNumber} />
+        <TimerHeader currentTime={time} totalTime={totalTime} />
         <TimerMain time={time} setTotalTime={setTotalTime} start={start} restartTimer={restartTimer} startStopTimer={startStopTimer} />
         <TimerFooter handleModal={handleModal} />
         <Modal title='Settings' modalOpen={modalOpen} handleModal={handleModal}>

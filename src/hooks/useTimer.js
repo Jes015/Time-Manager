@@ -2,56 +2,44 @@
 import { useEffect, useRef, useState } from 'react'
 
 // Utilities
-import { setLocalStorage } from '../utilities'
+import { setLocalStorage } from '@/utilities'
 
-export default function useTimer (defaultTime, defaultAlarmTone, defaultVolume) {
-  if (!defaultTime || !defaultAlarmTone) throw new Error('You must provide valid values for defualtTime and defaultAlarmTone')
+export default function useTimer (defaultTime, defaultTimerRingtone, defaultTimerVolume) {
+  if (!defaultTime || !defaultTimerRingtone || !defaultTimerVolume) throw new Error('You must provide valid values to useTimer')
 
   const [time, setTime] = useState(defaultTime)
-  const [progressNumber, setProgressNumber] = useState(0)
   const [start, setStart] = useState(false)
-  const isKeyboardEnable = useRef(false)
-  const lastInterval = useRef(null)
   const totalTime = useRef(defaultTime)
-  const alarmTone = useRef(new Audio(defaultAlarmTone))
-  
-  // Decrease time
-  const handleTime = () => {
-    lastInterval.current = setTimeout(() => {
+  const alarmTone = useRef(new Audio(defaultTimerRingtone))
+
+  const decreaseTime = () => {
+    setTime(prevTime => {
       let operation = {}
-      if (time.seconds > 0) {
-        operation = { ...time, seconds: time.seconds - 1 }
-      } else if (time.minutes > 0) {
-        operation = { ...time, seconds: 59, minutes: time.minutes - 1 }
-      } else if (time.hours > 0) {
-        operation = { seconds: 59, minutes: 59, hours: time.hours - 1 }
+      if (prevTime.seconds > 0) {
+        operation = { ...prevTime, seconds: prevTime.seconds - 1 }
+      } else if (prevTime.minutes > 0) {
+        operation = { ...prevTime, seconds: 59, minutes: prevTime.minutes - 1 }
+      } else if (prevTime.hours > 0) {
+        operation = { seconds: 59, minutes: 59, hours: prevTime.hours - 1 }
       } else {
+        operation = prevTime
         setStart(false)
-        isKeyboardEnable.current = false
         alarmTone.current.play()
       }
 
-      if (Object.values(time).every((item) => item === 0)) return
-
-      // Improve render with batching
-      setTime(operation)
-      setProgressNumber(calcProgressTime(operation))
-    }, 1000)
-  }
-
-  // Calculates the progress time to render the value in a progress bar component
-  const calcProgressTime = ({ hours, minutes, seconds }) => {
-    const totalTimeInSeconds = totalTime.current.hours * 3600 + totalTime.current.minutes * 60 + totalTime.current.seconds
-    const currentTimeInSeconds = hours * 3600 + minutes * 60 + seconds
-    const currentProgressInPercentage = ((totalTimeInSeconds - currentTimeInSeconds) / totalTimeInSeconds) * 100
-    return currentProgressInPercentage
+      return operation
+    })
   }
 
   useEffect(() => {
-    if (!start) { return }
-    handleTime()
-    return () => { clearTimeout(lastInterval.current) }
-  }, [start, time])
+    alarmTone.current.volume = defaultTimerVolume
+  }, [])
+
+  useEffect(() => {
+    if (!start) return
+    const interval = setInterval(decreaseTime, 1000)
+    return () => { clearInterval(interval) }
+  }, [start])
 
   // Set default time to restart
   const setTotalTime = (initialTime) => {
@@ -65,16 +53,13 @@ export default function useTimer (defaultTime, defaultAlarmTone, defaultVolume) 
   // Start or Stop timer
   const startStopTimer = () => {
     setStart(!start)
-    isKeyboardEnable.current = !isKeyboardEnable.current
   }
 
   // Restart timer
   const restartTimer = () => {
     if (!alarmTone.current.paused) alarmTone.current.pause()
     setStart(false)
-    isKeyboardEnable.current = false
     setTime(totalTime.current)
-    setProgressNumber(0)
     alarmTone.current.currentTime = 0
   }
 
@@ -100,7 +85,8 @@ export default function useTimer (defaultTime, defaultAlarmTone, defaultVolume) 
   const setAlarmVolume = (volume) => {
     if (volume > 1 || volume < 0) return
     alarmTone.current.volume = volume
+    localStorage.setItem('timerVolume', volume)
   }
 
-  return { time, start, startStopTimer, restartTimer, progressNumber, setTotalTime, setAlarmTone, isKeyboardEnable, setAlarmVolume, alarmVolume: alarmTone.current.volume }
+  return { time, start, startStopTimer, restartTimer, totalTime, setTotalTime, setAlarmTone, setAlarmVolume, alarmVolume: alarmTone.current.volume }
 }
