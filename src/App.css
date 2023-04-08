@@ -92,9 +92,3 @@ input[type=range]::-webkit-slider-runnable-track,input[type=range]::-moz-range-t
   background-color: var(--secondary-border-color);
   height: 0.13em;
 }
-
-@media screen and ( min-width: 1300px ) {
-  body {
-    font-size: 17px;
-  }
-}
