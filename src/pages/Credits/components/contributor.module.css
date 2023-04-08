@@ -1,14 +1,14 @@
 .contributor__container {
     display: inline-block;
-    padding: 0.4rem;
-    border-radius: 0.3rem;
+    padding: 0.4em;
+    border-radius: 0.3em;
     border: 1px solid var(--secondary-border-color);
 }
 
 .contributor__header {
     display: flex;
     justify-content: center;
-    gap: 0.2rem
+    gap: 0.2em
 }
 
 .contributor__authorUrl {
@@ -17,9 +17,9 @@
 }
 
 .contributor__rol {
-    font-size: 0.7rem;
+    font-size: 0.7em;
 }
 
 .contributor__organization {
-    font-size: 0.6rem;
+    font-size: 0.6em;
 }

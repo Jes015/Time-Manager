@@ -33,8 +33,8 @@ a{
 button {
   color: var(--secondary-text-color);
   cursor: pointer;
-  padding: 0.25rem 1rem;
-  font-size: 0.75rem;
+  padding: 0.25em 1em;
+  font-size: 0.75em;
   font-weight: 600;
   display: flex;
   justify-content: center;
@@ -49,10 +49,10 @@ input {
 
 button, input {
   background-color: transparent;
-  border: 0.0625rem solid var(--primary-border-color);
-  min-height: 2.5rem;
-  border-radius: 0.5rem;
-  padding: 0.25rem 0.75rem;
+  border: 0.0625em solid var(--primary-border-color);
+  min-height: 2.5em;
+  border-radius: 0.5em;
+  padding: 0.25em 0.75em;
 }
 
 .flex{
@@ -72,7 +72,7 @@ button:hover, input:focus {
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
-  padding: 0 0.1rem;
+  padding: 0 0.1em;
   background-color: transparent;
   border: none;
   height: 10px;
@@ -84,11 +84,17 @@ input[type="range"]::-webkit-slider-thumb, input[type=range]::-moz-range-thumb  
   background-color: var(--primary-text-color);
   outline: none;
   border: none;
-  height: 0.45rem;
+  height: 0.45em;
 }
 
 
 input[type=range]::-webkit-slider-runnable-track,input[type=range]::-moz-range-track {
   background-color: var(--secondary-border-color);
-  height: 0.13rem;
+  height: 0.13em;
+}
+
+@media screen and ( min-width: 1300px ) {
+  body {
+    font-size: 17px;
+  }
 }

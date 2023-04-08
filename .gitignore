@@ -2,4 +2,4 @@ dist
 node_modules
 package-lock.json
 ideas.txt
-
+pnpm-lock.yaml
