@@ -8,25 +8,33 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
   if (!defaultTime || !defaultTimerRingtone || !defaultTimerVolume) throw new Error('You must provide valid values to useTimer')
 
   const [time, setTime] = useState(defaultTime)
+  // Ref for avoid renders when the user is in another tab
+  const timeForNoRender = useRef(defaultTime)
   const [start, setStart] = useState(false)
   const totalTime = useRef(defaultTime)
   const alarmTone = useRef(new Audio(defaultTimerRingtone))
 
   const decreaseTime = () => {
     setTime(prevTime => {
-      let operation = {}
-      if (prevTime.seconds > 0) {
-        operation = { ...prevTime, seconds: prevTime.seconds - 1 }
-      } else if (prevTime.minutes > 0) {
-        operation = { ...prevTime, seconds: 59, minutes: prevTime.minutes - 1 }
-      } else if (prevTime.hours > 0) {
-        operation = { seconds: 59, minutes: 59, hours: prevTime.hours - 1 }
+      if (timeForNoRender.current.seconds > 0) {
+        timeForNoRender.current = { ...timeForNoRender.current, seconds: timeForNoRender.current.seconds - 1 }
+      } else if (timeForNoRender.current.minutes > 0) {
+        timeForNoRender.current = { ...timeForNoRender.current, seconds: 59, minutes: timeForNoRender.current.minutes - 1 }
+      } else if (timeForNoRender.current.hours > 0) {
+        timeForNoRender.current = { seconds: 59, minutes: 59, hours: timeForNoRender.current.hours - 1 }
       } else {
-        operation = prevTime
         setStart(false)
         alarmTone.current.play()
+
+        return timeForNoRender.current
       }
-      return operation
+
+      if (document.hidden) {
+        console.log('avoiding renders')
+        return prevTime
+      } else {
+        return timeForNoRender.current
+      }
     })
   }
 
@@ -59,6 +67,7 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
     if (!alarmTone.current.paused) alarmTone.current.pause()
     setStart(false)
     setTime(totalTime.current)
+    timeForNoRender.current = totalTime.current
     alarmTone.current.currentTime = 0
   }
 
