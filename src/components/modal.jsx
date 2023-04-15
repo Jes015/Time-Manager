@@ -1,6 +1,9 @@
 // Icons
 import { IoCloseSharp, IoLogoGithub } from 'react-icons/io5'
 
+// React router
+import { Link } from 'react-router-dom'
+
 // Custom components
 import { Backdrop } from '.'
 
@@ -21,6 +24,7 @@ export default function Modal ({ title, modalOpen, handleModal, children }) {
               {children}
             </main>
             <footer className={styles.modal__footer}>
+              <Link className={styles.modal__footerLink} to='/credits'>Credits</Link>
               <a href='https://github.com/Jes015/Time-Manager' target='_blank' rel='noreferrer'><IoLogoGithub /></a>
             </footer>
           </div>

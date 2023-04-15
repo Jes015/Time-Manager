@@ -41,9 +41,14 @@
 
 .modal__footer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     padding: 0.5em 1.25em;
     border-top: 0.0625em solid rgba( 143 143 163 / 0.24);
+}
+
+.modal__footerLink {
+    font-size: 0.7em;
 }
 
 .modal__title {

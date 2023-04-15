@@ -35,7 +35,7 @@ export default function InputModal ({ id, setData, label, placeholder }) {
         <input className={styles.inputButton__input} id={id} placeholder={placeholder} value={value} onChange={handleChange} />
         <button className={styles.inputButton__button} onClick={handleClick}><AiOutlineSend /></button>
       </div>
-      <span className={styles.inputButton__descriptionError}>{info.message}</span>
+      <span className={styles[info.status === 'danger' ? 'inputButton__descriptionError' : 'inputButton__descriptionSucces']}>{info.message}</span>
     </div>
   )
 }

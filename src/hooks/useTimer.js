@@ -26,7 +26,6 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
         setStart(false)
         alarmTone.current.play()
       }
-
       return operation
     })
   }

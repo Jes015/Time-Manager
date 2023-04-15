@@ -27,7 +27,8 @@ body {
 }
 
 a{
-  color: var(--primary-text-color)
+  color: var(--primary-text-color);
+  text-decoration: none;
 }
 
 button {

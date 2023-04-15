@@ -20,9 +20,16 @@
     font-size: 1em;
 }
 
-.inputButton__descriptionError {
+.inputButton__descriptionSucces, .inputButton__descriptionError {
     margin: 0.2em;
+    height: 1em;
     font-size: 0.7em;
+}
+.inputButton__descriptionError {
+    color: rgb(214, 94, 94);
+}
+.inputButton__descriptionSucces {
+    color: rgb(77, 165, 77);
 }
 
 .inputButton__label {
