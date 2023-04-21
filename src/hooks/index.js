@@ -1,2 +1,2 @@
-export { default as useKeybord } from './useKeybaordShortCuts'
+export { default as useShortCuts } from './useShortCuts'
 export { default as useTimer } from './useTimer'

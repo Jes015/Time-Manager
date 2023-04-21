@@ -1,1 +1,1 @@
-export { default as timerShorcut } from './timer.shortcut'
+export { addShortcut, getShortcut } from './timer.shortcut'

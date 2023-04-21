@@ -1,0 +1,26 @@
+.selectOption {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+
+.selectOption__header {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+}
+
+.selectOption__title {
+    font-size: 0.88em;
+}
+
+.selectOption__chip {
+    font-size: 0.55em;
+    background-color: var(--secondary-border-color);
+    border-radius: 0.5em;
+    padding: 0.3em;
+}
+
+.selectOption__button {
+    border-color: var(--secondary-border-color);
+}
