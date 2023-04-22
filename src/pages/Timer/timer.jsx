@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 // Custom Hooks
-import { useShortCuts, useTimer } from '@/hooks/'
+import { useDynamicShortCuts, useTimer, useStaticShortCuts } from '@/hooks/'
 
 // Custom components
 import { Modal } from '@/components'
@@ -10,13 +10,14 @@ import { TimerHeader, TimerMain, TimerFooter, Settings } from './components'
 
 // Config
 import { defaultTime, defaultTimerRingtone, defaultTimerVolume } from './config'
-import { addShortcut, getShortcut } from '@/infrastructure/keyboardshortcuts'
+import { addShortcut, getShortcut, getShortcutAction } from '@/infrastructure/keyboardshortcuts'
 
 export default function Timer () {
   const { time, start, startStopTimer, restartTimer, totalTime, setTotalTime, setAlarmTone, setAlarmVolume, alarmVolume } = useTimer(defaultTime, defaultTimerRingtone, defaultTimerVolume)
   const [modalOpen, setModalOpen] = useState(false)
 
-  useShortCuts(time, start, setTotalTime, startStopTimer, addShortcut, getShortcut)
+  useDynamicShortCuts(time, start, setTotalTime, addShortcut, getShortcut)
+  useStaticShortCuts(restartTimer, startStopTimer, start, getShortcutAction)
 
   const handleModal = () => {
     setModalOpen(!modalOpen)

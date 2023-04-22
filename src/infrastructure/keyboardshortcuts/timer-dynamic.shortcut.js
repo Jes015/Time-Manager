@@ -1,14 +1,14 @@
 // Utilities
 import { getLocalStorage, setLocalStorage } from '@/utilities'
 
-export const addShortcut = (key, time) => {
+const addShortcut = (key, time) => {
   const jsonShortcuts = getLocalStorage('keybordTimer')
 
   const shortcuts = (jsonShortcuts) ? JSON.parse(jsonShortcuts) : {}
   setLocalStorage('keybordTimer', JSON.stringify({ ...shortcuts, [key]: time }))
 }
 
-export const getShortcut = (key) => {
+const getShortcut = (key) => {
   const jsonShortcuts = getLocalStorage('keybordTimer')
 
   // Prevent parse error
@@ -21,3 +21,5 @@ export const getShortcut = (key) => {
   const newTime = shortcuts[key]
   return newTime
 }
+
+export { addShortcut, getShortcut }

@@ -1,8 +1,7 @@
 // React
 import { useEffect } from 'react'
 
-export default function useKeybord (time, start, setTotalTime, startStopTimer, addShortcut, getShortcut) {
-  // For dynamic shortcuts
+export default function useDynamicShortCuts (time, start, setTotalTime, addShortcut, getShortcut) {
   useEffect(() => {
     // Prevent adding event when time is rendering app
     if (start) return
