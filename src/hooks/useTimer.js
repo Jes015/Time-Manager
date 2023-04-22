@@ -14,6 +14,17 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
   const totalTime = useRef(defaultTime)
   const alarmTone = useRef(new Audio(defaultTimerRingtone))
 
+  useEffect(() => {
+    alarmTone.current.volume = defaultTimerVolume
+  }, [])
+
+  useEffect(() => {
+    if (!start) return
+    const interval = setInterval(decreaseTime, 1000)
+    return () => { clearInterval(interval) }
+  }, [start])
+
+  // Drecease time
   const decreaseTime = () => {
     setTime(prevTime => {
       if (timeForNoRender.current.seconds > 0) {
@@ -37,16 +48,6 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
       }
     })
   }
-
-  useEffect(() => {
-    alarmTone.current.volume = defaultTimerVolume
-  }, [])
-
-  useEffect(() => {
-    if (!start) return
-    const interval = setInterval(decreaseTime, 1000)
-    return () => { clearInterval(interval) }
-  }, [start])
 
   // Set default time to restart
   const setTotalTime = (initialTime) => {

@@ -7,6 +7,30 @@ With our app, you can say goodbye to stress and hello to productivity. Take cont
 
 - Timer: Maximize your productivity with our timer app. Stay focused and achieve your goals efficiently.
 
+## Shortcuts
+
+There are two types of keyboard shortcuts in this application: static and dynamic.
+
+### Static keyboard shortcuts
+
+Static keyboard shortcuts are those that do not change their function. In this application, the available static keyboard shortcuts are:
+
+- r: to reset the timer.
+- k: to start or stop the timer.
+
+### Dynamic keyboard shortcuts
+
+Dynamic keyboard shortcuts are those that can change their function depending on the assigned value. In this application, dynamic keyboard shortcuts are used to set a specific time on the timer.
+
+To assign a time value to a dynamic keyboard shortcut, follow these steps:
+
+1. Set a time value on the timer.
+2. Press Control and the corresponding numeric key of the dynamic keyboard shortcut you want to assign. For example, if you want to assign a dynamic keyboard shortcut for the key 3, press Control + 3. This will assign a dynamic keyboard shortcut for the key 3.
+3. Repeat steps 1 and 2 to assign dynamic keyboard shortcuts to other time values.
+
+To access the dynamic keyboard shortcuts, simply press the corresponding numeric key of the time value you want to set. For example, if you have assigned a time value of 2 minutes and 30 seconds to the key 3, press 3 to set that time on the timer.
+
+
 ## Installation steps
 
 1. Clone the repository
