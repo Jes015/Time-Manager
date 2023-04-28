@@ -16,9 +16,7 @@ const getShortcut = (key) => {
   // Parse Shortcuts
   const shortcuts = JSON.parse(jsonShortcuts)
   // Prevent key not found
-  const keyFound = Object.keys(shortcuts).some(actualKey => actualKey === key)
-  if (!keyFound) return null
-  const newTime = shortcuts[key]
+  const newTime = shortcuts?.[key]
   return newTime
 }
 
