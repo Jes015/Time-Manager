@@ -4,6 +4,9 @@ import { IoCloseSharp, IoLogoGithub } from 'react-icons/io5'
 // React router
 import { Link } from 'react-router-dom'
 
+// React Dom
+import { createPortal } from 'react-dom'
+
 // Custom components
 import { Backdrop } from '.'
 
@@ -12,7 +15,7 @@ import styles from './modal.module.css'
 
 export default function Modal ({ title, modalOpen, handleModal, children }) {
   return (
-    modalOpen && (
+    modalOpen && createPortal(
       <Backdrop>
         <div className={styles.modal}>
           <div className={styles.modal__container}>
@@ -29,7 +32,8 @@ export default function Modal ({ title, modalOpen, handleModal, children }) {
             </footer>
           </div>
         </div>
-      </Backdrop>
+      </Backdrop>,
+      document.getElementById('root')
     )
   )
 }

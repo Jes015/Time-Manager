@@ -2,15 +2,15 @@
 import { useState } from 'react'
 
 // Custom Hooks
-import { useDynamicShortCuts, useTimer, useStaticShortCuts } from '@/hooks/'
+import { useDynamicShortCuts, useStaticShortCuts, useTimer } from '@/hooks/'
 
 // Custom components
 import { Modal } from '@/components'
-import { TimerHeader, TimerMain, TimerFooter, Settings } from './components'
+import { Settings, TimerFooter, TimerHeader, TimerMain } from './components'
 
 // Config
-import { defaultTime, defaultTimerRingtone, defaultTimerVolume } from './config'
 import { addShortcut, getShortcut, getShortcutAction } from '@/infrastructure/keyboardshortcuts'
+import { defaultTime, defaultTimerRingtone, defaultTimerVolume } from './config'
 
 export default function Timer () {
   const { time, start, startStopTimer, restartTimer, totalTime, setTotalTime, setAlarmTone, setAlarmVolume, alarmVolume } = useTimer(defaultTime, defaultTimerRingtone, defaultTimerVolume)
