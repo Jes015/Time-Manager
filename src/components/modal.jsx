@@ -14,6 +14,9 @@ import { Backdrop } from '.'
 import styles from './modal.module.css'
 
 export default function Modal ({ title, modalOpen, handleModal, children }) {
+  const handleOnClose = () => {
+    handleModal(title)
+  }
   return (
     modalOpen && createPortal(
       <Backdrop>
@@ -21,7 +24,7 @@ export default function Modal ({ title, modalOpen, handleModal, children }) {
           <div className={styles.modal__container}>
             <header className={styles.modal__header}>
               <span className={styles.modal__title}>{title}</span>
-              <button className={styles.modal__button} onClick={handleModal}><IoCloseSharp />  </button>
+              <button className={styles.modal__button} onClick={handleOnClose}><IoCloseSharp />  </button>
             </header>
             <main className={styles.modal__main}>
               {children}

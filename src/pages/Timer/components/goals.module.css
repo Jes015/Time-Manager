@@ -1,0 +1,9 @@
+.goals {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    width: 20em;
+    height: 20em;
+    overflow-y: auto;
+}

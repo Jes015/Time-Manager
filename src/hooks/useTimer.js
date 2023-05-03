@@ -97,5 +97,5 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
     localStorage.setItem('timerVolume', volume)
   }
 
-  return { time, start, startStopTimer, restartTimer, totalTime, setTotalTime, setAlarmTone, setAlarmVolume, alarmVolume: alarmTone.current.volume }
+  return { time, start, startStopTimer, restartTimer, totalTime: totalTime.current, setTotalTime, setAlarmTone, setAlarmVolume, alarmVolume: alarmTone.current.volume }
 }

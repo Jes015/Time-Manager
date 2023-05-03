@@ -1,14 +1,25 @@
 // Custom components
-import { SettingsButton } from './components'
+import { AiFillBook, AiFillSetting } from 'react-icons/ai'
+import IconButton from './components/settingsButton'
 
 // Styles
 import styles from './timerFooter.module.css'
 
+// Consts
+import { footerButtons } from '../../consts'
+
 export default function TimerFooter ({ handleModal }) {
   return (
-    <footer>
-      <div className={styles.timerFooter__container}>
-        <SettingsButton handleModal={handleModal} />
+    <footer className={styles.timerFooter}>
+      <div>
+        <IconButton title={footerButtons.Goals} handleModal={handleModal}>
+          <AiFillBook />
+        </IconButton>
+      </div>
+      <div>
+        <IconButton title={footerButtons.Settings} handleModal={handleModal}>
+          <AiFillSetting />
+        </IconButton>
       </div>
     </footer>
   )

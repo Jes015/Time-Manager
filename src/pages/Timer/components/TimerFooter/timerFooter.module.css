@@ -1,7 +1,9 @@
-.timerFooter__container {
+.timerFooter {
+    display: flex;
     position: absolute;
     bottom: 0.45em;
     right: 0.45em;
+    gap: 0.5em;
 }
 
 .timerFooter__button {
