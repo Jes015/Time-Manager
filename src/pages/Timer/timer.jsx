@@ -17,7 +17,7 @@ import { defaultGoals, defaultTime, defaultTimerRingtone, defaultTimerVolume } f
 
 export default function Timer () {
   const { time, start, startStopTimer, restartTimer, totalTime, setTotalTime, setAlarmTone, setAlarmVolume, alarmVolume } = useTimer(defaultTime, defaultTimerRingtone, defaultTimerVolume)
-  const { goals, actualGoal } = useGoals(time, defaultGoals)
+  const { goals, actualGoal, setNextGoal } = useGoals(time, defaultGoals, setTotalTime)
 
   const [modalOpen, setModalOpen] = useState({ [footerButtons.Settings]: { open: false }, [footerButtons.Goals]: { open: false } })
 
@@ -38,7 +38,7 @@ export default function Timer () {
       <TimerFooter handleModal={handleModal} />
       <Modal title={modalOpen[footerButtons.Settings].open ? footerButtons.Settings : footerButtons.Goals} modalOpen={modalOpen[footerButtons.Settings].open || modalOpen[footerButtons.Goals].open} handleModal={handleModal}>
         {modalOpen[footerButtons.Settings].open && <Settings setAlarmTone={setAlarmTone} setAlarmVolume={setAlarmVolume} alarmVolume={alarmVolume} />}
-        {modalOpen[footerButtons.Goals].open && <Goals goals={goals} actualGoal={actualGoal} />}
+        {modalOpen[footerButtons.Goals].open && <Goals setNextGoal={setNextGoal} goals={goals} actualGoal={actualGoal} />}
       </Modal>
     </div>
   )

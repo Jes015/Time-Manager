@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Dweb",
+        "completed": false,
+        "time": {
+            "hours": 2,
+            "minutes": 0,
+            "seconds": 0
+        },
+        "percentCompleted": 0
+    },
+    {
+        "name": "Descanso",
+        "completed": false,
+        "time": {
+            "hours": 1,
+            "minutes": 0,
+            "seconds": 0
+        },
+        "percentCompleted": 0
+    },
+    {
+        "name": "Ingles",
+        "completed": true,
+        "time": {
+            "hours": 0,
+            "minutes": 40,
+            "seconds": 0
+        },
+        "percentCompleted": 0
+    },
+    {
+        "name": "Descanso",
+        "completed": false,
+        "time": {
+            "hours": 0,
+            "minutes": 30,
+            "seconds": 0
+        },
+        "percentCompleted": 0
+    }
+]

@@ -49,6 +49,9 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
     })
   }
 
+  const setNewTime = (newTime) => {
+    setTime(newTime)
+  }
   // Set default time to restart
   const setTotalTime = (initialTime) => {
     // Prevent unnecessary renderings
@@ -67,7 +70,7 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
   const restartTimer = () => {
     if (!alarmTone.current.paused) alarmTone.current.pause()
     setStart(false)
-    setTime(totalTime.current)
+    setNewTime(totalTime.current)
     timeForNoRender.current = totalTime.current
     alarmTone.current.currentTime = 0
   }

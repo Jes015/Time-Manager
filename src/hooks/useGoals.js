@@ -4,13 +4,14 @@ import { useEffect, useMemo, useState } from 'react'
 // Utils
 import { calcProgressBarTime, setLocalStorage } from '@/utilities'
 
-const useGoals = (time, goals) => {
-  const [actualGoal, setActualGoal] = useState(goals.find((goal) => goal.percentCompleted !== 100))
-  const actualGoalIndex = useMemo(() => goals.findIndex((goal) => goal.name === actualGoal.name), [actualGoal])
+const useGoals = (time, goals, setTotalTime) => {
+  const [actualGoal, setActualGoal] = useState(null)
+  const actualGoalIndex = useMemo(() => actualGoal ? goals.findIndex((goal) => goal.name === actualGoal.name) : null, [actualGoal])
 
   useEffect(() => {
+    if (actualGoal == null) return
     // Set the new goal to the state
-    const tempGoal = { ...actualGoal, percentCompleted: calcProgressBarTime(time, actualGoal.time) }
+    const tempGoal = { ...actualGoal, actualTime: time, percentCompleted: calcProgressBarTime(actualGoal.time, time) }
     setActualGoal(tempGoal)
 
     // Save the new goal to the localStorage
@@ -19,21 +20,27 @@ const useGoals = (time, goals) => {
 
     if (tempGoal.percentCompleted === 100) {
       setCompletedGoal()
-      setNextGoal()
     }
   }, [time])
 
   const setCompletedGoal = () => {
-    setActualGoal({ ...actualGoal, completed: true })
+    setActualGoal({ ...actualGoal, percentCompleted: 100 })
   }
 
-  const setNextGoal = () => {
-    const newGoal = goals[actualGoalIndex + 1]
-    if (newGoal) return
+  const setNextGoal = (newGoal) => {
+    // Determinate what's the next index for the new goal
+    const newGoalIndex = !newGoal ? actualGoalIndex + 1 : goals.findIndex((goal) => newGoal.name === goal.name)
+    newGoal = goals[newGoalIndex]
+
+    if (newGoal === undefined) return
+
     setActualGoal(newGoal)
+
+    // Set total time on the timer
+    setTotalTime(newGoal.time)
   }
 
-  return { goals, actualGoal }
+  return { goals, actualGoal, setNextGoal }
 }
 
 export default useGoals

@@ -3,7 +3,30 @@
     flex-direction: column;
     gap: 1em;
 
-    width: 20em;
+    width: 19em;
     height: 20em;
-    overflow-y: auto;
+}
+
+.goals__SectionTitle {
+    display: inline-block;
+
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.goals__AllGoals {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+    
+    height: 11.5em;
+
+    border-radius: 0.5em;
+
+    overflow-y: scroll;
+}
+
+.goalsDesactivated {
+    height: 19em;
 }
