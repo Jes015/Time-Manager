@@ -10,7 +10,7 @@
         "percentCompleted": 0
     },
     {
-        "name": "Descanso",
+        "name": "Descanso o Dweb",
         "completed": false,
         "time": {
             "hours": 1,
@@ -30,7 +30,7 @@
         "percentCompleted": 0
     },
     {
-        "name": "Descanso",
+        "name": "Aprender Rust",
         "completed": false,
         "time": {
             "hours": 0,
