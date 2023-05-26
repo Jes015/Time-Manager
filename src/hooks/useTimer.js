@@ -26,27 +26,24 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
 
   // Drecease time
   const decreaseTime = () => {
-    setTime(prevTime => {
-      if (timeForNoRender.current.seconds > 0) {
-        timeForNoRender.current = { ...timeForNoRender.current, seconds: timeForNoRender.current.seconds - 1 }
-      } else if (timeForNoRender.current.minutes > 0) {
-        timeForNoRender.current = { ...timeForNoRender.current, seconds: 59, minutes: timeForNoRender.current.minutes - 1 }
-      } else if (timeForNoRender.current.hours > 0) {
-        timeForNoRender.current = { seconds: 59, minutes: 59, hours: timeForNoRender.current.hours - 1 }
-      } else {
-        setStart(false)
-        alarmTone.current.play()
+    if (timeForNoRender.current.seconds > 0) {
+      timeForNoRender.current = { ...timeForNoRender.current, seconds: timeForNoRender.current.seconds - 1 }
+    } else if (timeForNoRender.current.minutes > 0) {
+      timeForNoRender.current = { ...timeForNoRender.current, seconds: 59, minutes: timeForNoRender.current.minutes - 1 }
+    } else if (timeForNoRender.current.hours > 0) {
+      timeForNoRender.current = { seconds: 59, minutes: 59, hours: timeForNoRender.current.hours - 1 }
+    } else {
+      alarmTone.current.play()
 
-        return timeForNoRender.current
-      }
+      setStart(false)
+      setTime(timeForNoRender.current)
+    }
 
-      if (document.hidden) {
-        console.log('avoiding renders')
-        return prevTime
-      } else {
-        return timeForNoRender.current
-      }
-    })
+    if (document.hidden) {
+      console.log('avoiding renders')
+    } else {
+      setTime(timeForNoRender.current)
+    }
   }
 
   const setNewTime = (newTime) => {
