@@ -4,47 +4,49 @@ import { useEffect, useRef, useState } from 'react'
 // Utilities
 import { setLocalStorage } from '@/utilities'
 
+// Worker
+import { TimerWorkerBuilder, timerWorker } from '../workers/'
+
+const worker = new TimerWorkerBuilder(timerWorker)
+
 export default function useTimer (defaultTime, defaultTimerRingtone, defaultTimerVolume) {
   if (!defaultTime || !defaultTimerRingtone || !defaultTimerVolume) throw new Error('You must provide valid values to useTimer')
 
   const [time, setTime] = useState(defaultTime)
-  // Ref for avoid renders when the user is in another tab
-  const timeForNoRender = useRef(defaultTime)
   const [start, setStart] = useState(false)
   const totalTime = useRef(defaultTime)
   const alarmTone = useRef(new Audio(defaultTimerRingtone))
 
   useEffect(() => {
     alarmTone.current.volume = defaultTimerVolume
+    worker.setInitialTime(totalTime.current)
+
+    const workerEvent = ({ data }) => {
+      if (document.visibilityState === 'visible') {
+        setNewTime(data.time)
+      }
+
+      if (data.type === 'end') {
+        setNewTime(data.time)
+        alarmTone.current.play()
+        setStart(false)
+      }
+    }
+
+    const workerEventListener = worker.addEventListener('message', workerEvent)
+
+    return () => {
+      removeEventListener('message', workerEventListener)
+    }
   }, [])
 
   useEffect(() => {
-    if (!start) return
-    const interval = setInterval(decreaseTime, 1000)
-    return () => { clearInterval(interval) }
+    if (start) {
+      worker.startTimer()
+    } else {
+      worker.stopTimer()
+    }
   }, [start])
-
-  // Drecease time
-  const decreaseTime = () => {
-    if (timeForNoRender.current.seconds > 0) {
-      timeForNoRender.current = { ...timeForNoRender.current, seconds: timeForNoRender.current.seconds - 1 }
-    } else if (timeForNoRender.current.minutes > 0) {
-      timeForNoRender.current = { ...timeForNoRender.current, seconds: 59, minutes: timeForNoRender.current.minutes - 1 }
-    } else if (timeForNoRender.current.hours > 0) {
-      timeForNoRender.current = { seconds: 59, minutes: 59, hours: timeForNoRender.current.hours - 1 }
-    } else {
-      alarmTone.current.play()
-
-      setStart(false)
-      setTime(timeForNoRender.current)
-    }
-
-    if (document.hidden) {
-      console.log('avoiding renders')
-    } else {
-      setTime(timeForNoRender.current)
-    }
-  }
 
   const setNewTime = (newTime) => {
     setTime(newTime)
@@ -68,7 +70,7 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
     if (!alarmTone.current.paused) alarmTone.current.pause()
     setStart(false)
     setNewTime(totalTime.current)
-    timeForNoRender.current = totalTime.current
+    worker.setInitialTime(totalTime.current)
     alarmTone.current.currentTime = 0
   }
 

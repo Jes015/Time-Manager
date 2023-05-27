@@ -3,7 +3,7 @@ const calcProgressBarTime = (totalTime, currentTime) => {
   const totalTimeInSeconds = totalTime.hours * 3600 + totalTime.minutes * 60 + totalTime.seconds
   const currentTimeInSeconds = currentTime.hours * 3600 + currentTime.minutes * 60 + currentTime.seconds
   const currentProgressInPercentage = ((totalTimeInSeconds - currentTimeInSeconds) / totalTimeInSeconds) * 100
-  return currentProgressInPercentage
+  return isNaN(currentProgressInPercentage) ? 0 : currentProgressInPercentage // it will be fixed soon
 }
 
 export { calcProgressBarTime }
