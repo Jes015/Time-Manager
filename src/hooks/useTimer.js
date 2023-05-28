@@ -72,6 +72,7 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
     setNewTime(totalTime.current)
     worker.setInitialTime(totalTime.current)
     alarmTone.current.currentTime = 0
+    alarmTone.current.stop()
   }
 
   // Set alarm tone

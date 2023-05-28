@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 // Custom Hooks
-import { useDynamicShortCuts, useGoals, useStaticShortCuts, useTimer } from '@/hooks/'
+import { useGoals, useStaticShortCuts, useTimer } from '@/hooks/'
 
 // Custom components
 import { Modal } from '@/components'
@@ -12,7 +12,6 @@ import { Goals, Settings, TimerFooter, TimerHeader, TimerMain } from './componen
 import { footerButtons } from './consts'
 
 // Config
-import { addShortcut, getShortcut, getShortcutAction } from '@/infrastructure/keyboardshortcuts'
 import { defaultGoals, defaultTime, defaultTimerRingtone, defaultTimerVolume } from './config'
 
 export default function Timer () {
@@ -21,8 +20,7 @@ export default function Timer () {
 
   const [modalOpen, setModalOpen] = useState({ [footerButtons.Settings]: { open: false }, [footerButtons.Goals]: { open: false } })
 
-  useDynamicShortCuts(time, start, setTotalTime, addShortcut, getShortcut)
-  useStaticShortCuts(restartTimer, startStopTimer, start, getShortcutAction)
+  useStaticShortCuts(restartTimer, startStopTimer, start)
 
   const handleModal = (title) => {
     const newModalState = modalOpen[title]
