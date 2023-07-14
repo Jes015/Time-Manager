@@ -1,14 +1,14 @@
 import { staticShortcuts } from '@/consts'
 import { useEffect } from 'react'
 
+const getShortcutAction = (key) => {
+  // Prevent key not found
+  const actionFound = staticShortcuts?.[key]
+
+  return actionFound
+}
+
 export default function useStaticShortCuts (restartTimer, startStopTimer, start) {
-  const getShortcutAction = (key) => {
-    // Prevent key not found
-    const actionFound = staticShortcuts?.[key]
-
-    return actionFound
-  }
-
   // For static shortcuts
   useEffect(() => {
     const adapter = (event) => {

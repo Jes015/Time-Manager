@@ -71,8 +71,8 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
     setStart(false)
     setNewTime(totalTime.current)
     worker.setInitialTime(totalTime.current)
+    console.log(alarmTone)
     alarmTone.current.currentTime = 0
-    alarmTone.current.stop()
   }
 
   // Set alarm tone
