@@ -1,0 +1,21 @@
+.adSpace {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    bottom: 2dvh;
+    bottom: 2vh;
+}
+
+.adSpace__text {
+    font-style: italic;
+    font-size: 0.75em;
+}
+
+@media (497px >=width) {
+    .adSpace {
+        bottom: 10dvh;
+        bottom: 10vh;
+    }
+}

@@ -1,6 +1,6 @@
 // CUSTOM COMPONENTS
-import Time from './components/time'
 import Controls from './components/controls'
+import Time from './components/time'
 
 // Styles
 import styles from './timerMain.module.css'
