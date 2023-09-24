@@ -5,3 +5,30 @@
 .slider__label {
     font-size: 0.88em;
 }
+
+/* Estilos específicos para WebKit (Chrome y Safari) */
+input[type="range"]::-webkit-slider-thumb {
+    width: 20px;
+    /* Ancho del control deslizante */
+    height: 20px;
+    /* Altura del control deslizante */
+    background: var(--primary-text-color);
+    /* Color del control deslizante */
+    border: 2px solid #fff;
+    /* Borde del control deslizante */
+    border-radius: 50%;
+    /* Hace que el control deslizante sea circular */
+    cursor: pointer;
+    /* Cambia el cursor al pasar sobre el control deslizante */
+    margin-top: -5px;
+    /* Ajusta la posición vertical del control deslizante */
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background:  var(--primary-text-color);
+    /* Cambia el color de la línea indicadora */
+    height: 5px;
+    /* Altura de la línea indicadora en el centro */
+    border-radius: 5px;
+    /* Bordes redondeados */
+}
