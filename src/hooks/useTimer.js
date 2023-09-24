@@ -50,6 +50,7 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
 
   const setNewTime = (newTime) => {
     setTime(newTime)
+    setLocalStorage('defaultTime', JSON.stringify(newTime))
   }
   // Set default time to restart
   const setTotalTime = (initialTime) => {
