@@ -1,5 +1,5 @@
 // Icons
-import { AiOutlineLink } from 'react-icons/ai'
+import { AiOutlineLink } from '@/components'
 
 // Styles
 import styles from './contributor.module.css'

@@ -1,5 +1,5 @@
 // Icons
-import { IoCloseSharp, IoLogoGithub } from 'react-icons/io5'
+import { IoCloseSharp, IoLogoGithub } from '@/components'
 
 // React router
 import { Link } from 'react-router-dom'

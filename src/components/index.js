@@ -1,4 +1,5 @@
 export { default as Accordion } from './Accordion/Accordion'
+export * from './Icons'
 export { default as Backdrop } from './backdrop'
 export { default as Goal } from './goal'
 export { default as InputButton } from './inputButton'

@@ -1,5 +1,5 @@
 // Custom components
-import { AiFillBook, AiFillSetting } from 'react-icons/ai'
+import { AiFillBook, AiFillSetting } from '@/components'
 import IconButton from './components/settingsButton'
 
 // Styles
