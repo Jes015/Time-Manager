@@ -4,10 +4,15 @@ import { ProgressBar } from '@/components'
 // Styles
 import styles from './goal.module.css'
 
-export default function Goal ({ goal, setNextGoal }) {
-  const handleOnClickGoal = () => {
+export default function Goal ({ goal, setNextGoal, removeGoal }) {
+  const handleOnClickGoalSet = () => {
     setNextGoal(goal)
   }
+
+  const handleOnClickGoalDelete = () => {
+    removeGoal(goal.name)
+  }
+
   return (
     <div className={styles.goal}>
       <header className={styles.goal__header}>
@@ -16,8 +21,8 @@ export default function Goal ({ goal, setNextGoal }) {
       </header>
       <footer className={styles.goal__footer}>
         <ProgressBar value={goal.percentCompleted} />
-        <button onClick={handleOnClickGoal}>Set goal</button>
-        <button>Delete goal</button>
+        <button onClick={handleOnClickGoalSet}>Set goal</button>
+        <button onClick={handleOnClickGoalDelete}>Delete goal</button>
       </footer>
     </div>
   )

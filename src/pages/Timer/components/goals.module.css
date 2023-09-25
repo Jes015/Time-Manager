@@ -1,32 +1,14 @@
 .goals {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    align-items: stretch;
+    gap: 0;
 
     width: 19em;
     height: 20em;
+
 }
 
-.goals__SectionTitle {
+.goals__Section-header {
     display: inline-block;
-
-    font-size: 0.9em;
-    font-weight: bold;
-    margin-bottom: 0.5em;
-}
-
-.goals__AllGoals {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6em;
-    
-    height: 11.5em;
-
-    border-radius: 0.5em;
-
-    overflow-y: scroll;
-}
-
-.goalsDesactivated {
-    height: 19em;
 }

@@ -6,8 +6,27 @@ import { defaultGoals, defaultTime, defaultTimerRingtone, defaultTimerVolume } f
 import { footerButtons } from './consts'
 
 export default function Timer () {
-  const { time, start, startStopTimer, restartTimer, totalTime, setTotalTime, setAlarmTone, setAlarmVolume, alarmVolume } = useTimer(defaultTime, defaultTimerRingtone, defaultTimerVolume)
-  const { goals, actualGoal, setNextGoal } = useGoals(time, defaultGoals, setTotalTime)
+  const {
+    time,
+    start,
+    startStopTimer,
+    restartTimer,
+    totalTime,
+    setTotalTime,
+    setAlarmTone,
+    setAlarmVolume,
+    alarmVolume
+  } = useTimer(defaultTime, defaultTimerRingtone, defaultTimerVolume)
+
+
+  const {
+    actualGoal,
+    actualGoals,
+    setNextGoal,
+    addNewGoal,
+    removeGoal,
+    editGoal
+  } = useGoals(time, defaultGoals, setTotalTime)
 
   const [modalOpen, setModalOpen] = useState({ [footerButtons.Settings]: { open: false }, [footerButtons.Goals]: { open: false } })
 
@@ -28,7 +47,7 @@ export default function Timer () {
       <TimerFooter handleModal={handleModal} />
       <Modal title={modalOpen[footerButtons.Settings].open ? footerButtons.Settings : footerButtons.Goals} modalOpen={modalOpen[footerButtons.Settings].open || modalOpen[footerButtons.Goals].open} handleModal={handleModal}>
         {modalOpen[footerButtons.Settings].open && <Settings setAlarmTone={setAlarmTone} setAlarmVolume={setAlarmVolume} alarmVolume={alarmVolume} />}
-        {modalOpen[footerButtons.Goals].open && <Goals setNextGoal={setNextGoal} goals={goals} actualGoal={actualGoal} />}
+        {modalOpen[footerButtons.Goals].open && <Goals {...{ addNewGoal, setNextGoal, removeGoal, editGoal, goals: actualGoals, actualGoal }} />}
       </Modal>
     </div>
   )
