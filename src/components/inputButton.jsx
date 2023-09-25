@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 // Styles
-import { AiOutlineSend } from 'react-icons/ai'
+import { AiOutlineSend } from '@/components'
 
 // Styles
 import styles from './inputButton.module.css'

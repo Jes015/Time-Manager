@@ -14,8 +14,9 @@
 }
 
 .controls__button {
-    min-width: 9.333em;
+    min-width: clamp(1.7em, 45vw, 9.333em);
     min-height: 3.333em;
+    font-size: clamp(0.1em, 4vw, 0.8em);
 }
 
 .time__divider {

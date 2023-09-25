@@ -10,6 +10,8 @@
 
 .adSpace__text {
     font-style: italic;
+    text-wrap: balance;
+    text-align: center;
     font-size: 0.75em;
 }
 
