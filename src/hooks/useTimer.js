@@ -5,9 +5,11 @@ import { useEffect, useRef, useState } from 'react'
 import { setLocalStorage } from '@/utilities'
 
 // Worker
+import { defaultTimerRingtone } from '../pages/Timer/config'
 import { TimerWorkerBuilder, timerWorker } from '../workers/'
 
 const worker = new TimerWorkerBuilder(timerWorker)
+const alarmTone = new Audio(defaultTimerRingtone)
 
 export default function useTimer (defaultTime, defaultTimerRingtone, defaultTimerVolume) {
   if (!defaultTime || !defaultTimerRingtone || !defaultTimerVolume) throw new Error('You must provide valid values to useTimer')
@@ -15,10 +17,9 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
   const [time, setTime] = useState(defaultTime)
   const [start, setStart] = useState(false)
   const totalTime = useRef(defaultTime)
-  const alarmTone = useRef(new Audio(defaultTimerRingtone))
 
   useEffect(() => {
-    alarmTone.current.volume = defaultTimerVolume
+    alarmTone.volume = defaultTimerVolume
     worker.setInitialTime(totalTime.current)
 
     const workerEvent = ({ data }) => {
@@ -28,7 +29,7 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
 
       if (data.type === 'end') {
         setNewTime(data.time)
-        alarmTone.current.play()
+        alarmTone.play()
         setStart(false)
       }
     }
@@ -68,12 +69,11 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
 
   // Restart timer
   const restartTimer = () => {
-    if (!alarmTone.current.paused) alarmTone.current.pause()
+    if (!alarmTone.paused) alarmTone.pause()
     setStart(false)
     setNewTime(totalTime.current)
     worker.setInitialTime(totalTime.current)
-    console.log(alarmTone)
-    alarmTone.current.currentTime = 0
+    alarmTone.currentTime = 0
   }
 
   // Set alarm tone
@@ -84,7 +84,7 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
         .then((res) => {
           if (!res.ok) { reject(new Error('Url not found')); return }
           if (res.headers.get('Content-Type') !== 'audio/mpeg') { reject(new Error('Url does not provide mp3 file')); return }
-          alarmTone.current.src = url
+          alarmTone.src = url
           setLocalStorage('alarmTone', url)
           resolve('Sound set')
         })
@@ -97,9 +97,9 @@ export default function useTimer (defaultTime, defaultTimerRingtone, defaultTime
   // Set volume
   const setAlarmVolume = (volume) => {
     if (volume > 1 || volume < 0) return
-    alarmTone.current.volume = volume
+    alarmTone.volume = volume
     localStorage.setItem('timerVolume', volume)
   }
 
-  return { time, start, startStopTimer, restartTimer, totalTime: totalTime.current, setTotalTime, setAlarmTone, setAlarmVolume, alarmVolume: alarmTone.current.volume }
+  return { time, start, startStopTimer, restartTimer, totalTime: totalTime.current, setTotalTime, setAlarmTone, setAlarmVolume, alarmVolume: alarmTone.volume }
 }
