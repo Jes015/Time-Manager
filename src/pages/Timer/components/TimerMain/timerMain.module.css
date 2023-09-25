@@ -19,11 +19,11 @@
 }
 
 .time__divider {
-    font-size: 4.5em;
+    font-size: clamp(1.7em, 20vw, 4.7em);
 }
 
 .input {
-    font-size: 4.7em;
+    font-size: clamp(1.7em, 20vw, 4.7em);
     border: 0.01em solid transparent;
     font-weight: 700;
     letter-spacing: 0.01em;
