@@ -1,3 +1,5 @@
+This project was my first project in React, it has a lot of bad practices, and I don't have much time to fix them, but I will try to provide support for it in the coming years.
+
 # Time manager
 
 Effortlessly manage your daily tasks and goals with our time-management app. Stay on track with a timer for each task, daily goal-setting, and other handy features.
@@ -25,7 +27,6 @@ To assign a time value to a dynamic keyboard shortcut, follow these steps:
 3. Repeat steps 1 and 2 to assign dynamic keyboard shortcuts to other time values.
 
 To access the dynamic keyboard shortcuts, simply press the corresponding numeric key of the time value you want to set. For example, if you have assigned a time value of 2 minutes and 30 seconds to the key 3, press 3 to set that time on the timer.
-
 
 ## Installation steps
 

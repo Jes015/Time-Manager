@@ -1,25 +1,18 @@
 // Custom components
-import { Goal } from '@/components'
+import { ActualGoalSection, AddGoalsSection, GoalsSection } from './Sections/'
 
 // Styles
 import styles from './goals.module.css'
 
-export default function Goals ({ goals, actualGoal, setNextGoal }) {
+export default function Goals ({ goals, actualGoal, setNextGoal, addNewGoal, removeGoal, editGoal }) {
   return (
     <div className={styles.goals}>
       {
         actualGoal &&
-          <section>
-            <span className={styles.goals__SectionTitle}>Actual Goal</span>
-            <Goal setNextGoal={setNextGoal} goal={actualGoal} />
-          </section>
+        <ActualGoalSection {...{ setNextGoal, actualGoal }} />
       }
-      <section>
-        <span className={styles.goals__SectionTitle}>All goals</span>
-        <div className={[styles.goals__AllGoals, !actualGoal && styles.goalsDesactivated].join(' ')}>
-          {goals.map((goal) => <Goal key={goal.name} setNextGoal={setNextGoal} goal={goal} />)}
-        </div>
-      </section>
-    </div>
+      <AddGoalsSection {...{ addNewGoal }}/>
+      <GoalsSection {...{ goals, setNextGoal, actualGoal, removeGoal }} />
+    </div >
   )
 }
